@@ -21,6 +21,10 @@ const navItems = [
     name: "Signal podcast",
     path: "/signal",
   },
+  {
+    name: "Live (todo)",
+    path: "",
+  },
 
   // {
   //   name: "ENG",
@@ -37,7 +41,6 @@ const navState = ref(false);
       <ELogo el="span" />
     </a>
     <Nav :class="{ navActive: navState }" :nav-items="navItems" />
-    <!-- <ELiveButton /> -->
     <button class="toggleNav" @click="navState = !navState">
       <IconMenu style="fill: var(--gray-500)" />
     </button>

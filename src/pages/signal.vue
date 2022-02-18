@@ -24,8 +24,8 @@ const rss = await parser.parseString(rssSource.contents);
       <ETitle size="lg">Elektron Signal</ETitle>
       <!-- TODO: Add susbcribe buttons -->
       <!-- https://github.com/elektronstudio/art/blob/master/src/pages/Signal.vue#L36 -->
-      <EContent v-html="formatMarkdown(podcast[0].description_estonian)" />
-      <EContent v-html="formatMarkdown(podcast[0].description_english)" />
+      <EContent v-html="formatMarkdown(podcast.description_estonian)" />
+      <EContent v-html="formatMarkdown(podcast.description_english)" />
     </EStack>
     <EStack>
       <ETitle>Latest episodes</ETitle>

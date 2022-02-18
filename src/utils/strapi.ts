@@ -40,8 +40,18 @@ export async function getFestivals() {
   );
 }
 
+// Main festival v3
+
+export async function getMainFestival() {
+  return await $fetch(
+    "https://strapi.elektron.art/festivals?slug=kohe2022"
+  ).then((f) => f.map(processFestival)[0]);
+}
+
 // Podcasts v3
 
 export async function getPodcast() {
-  return await $fetch("https://strapi.elektron.art/festivals?slug=signal");
+  return await $fetch("https://strapi.elektron.art/festivals?slug=signal").then(
+    (f) => f.map(processFestival)[0]
+  );
 }
