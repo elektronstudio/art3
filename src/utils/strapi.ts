@@ -1,4 +1,5 @@
-import { formatDatetime } from "elektro";
+import { computed } from "vue";
+import { formatDatetime, useRange } from "elektro";
 import { $fetch } from "ohmyfetch";
 
 // Events v3
@@ -28,6 +29,20 @@ function processFestival(festival: any) {
       ? formatDatetime(new Date(festival.events[0]?.end_at))
       : null,
   };
+  festival.events = computed(() =>
+    festival.events.map((event: any) => {
+      const eventData = useRange(
+        new Date(event.start_at),
+        new Date(event.end_at)
+      );
+      return { ...event, ...eventData };
+    })
+  );
+
+  festival.upcomingEvents = computed(() =>
+    festival.events.value.filter((event: any) => event.urgency.value !== "past")
+  );
+
   return festival;
 }
 
@@ -37,6 +52,12 @@ export async function getFestivals() {
     "https://strapi.elektron.art/festivals?_sort=created_at:DESC&_limit=-1"
   ).then((f) =>
     f.filter(filterFestival).sort(sortFestival).map(processFestival)
+  );
+}
+
+export async function getUpcomingFestivals() {
+  return getFestivals().then((f) =>
+    f.filter((festival: any) => festival.upcomingEvents.length > 0)
   );
 }
 

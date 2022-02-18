@@ -11,6 +11,7 @@ declare module 'vue' {
     EImageSlider: typeof import('elektro')['EImageSlider']
     ELogo: typeof import('elektro')['ELogo']
     EProductionCard: typeof import('elektro')['EProductionCard']
+    EScheduleEvent: typeof import('elektro')['EScheduleEvent']
     EStack: typeof import('elektro')['EStack']
     ETitle: typeof import('elektro')['ETitle']
     EWindowBorder: typeof import('elektro')['EWindowBorder']
