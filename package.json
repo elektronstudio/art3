@@ -1,0 +1,29 @@
+{
+  "name": "art3",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "iles dev --open",
+    "build": "iles build",
+    "preview": "iles preview --open --port 5050",
+    "test": "iles test",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "engines": {
+    "node": "^14.18 || >= 16.0.0"
+  },
+  "devDependencies": {
+    "@iconify-json/codicon": "^1.1.2",
+    "@iconify-json/radix-icons": "^1.1.1",
+    "@types/marked": "^4.0.2",
+    "iles": "^0.7.19",
+    "typescript": "^4.5",
+    "vue-tsc": "^0.29"
+  },
+  "dependencies": {
+    "elektro": "^0.0.31-beta.3",
+    "marked": "^4.0.12",
+    "ohmyfetch": "^0.4.15",
+    "rss-parser": "^3.12.0",
+    "unplugin-icons": "^0.13.2"
+  }
+}
