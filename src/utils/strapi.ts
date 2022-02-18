@@ -14,6 +14,10 @@ function sortFestival(a: any, b: any) {
   return Number(b.pinned) - Number(a.pinned);
 }
 
+function filterFestival(festival: any) {
+  return !["kohe2022", "signal"].includes(festival.slug);
+}
+
 function processFestival(festival: any) {
   festival.thumbnail = festival.images[0]?.url;
   festival.nextEvent = {
@@ -30,8 +34,10 @@ function processFestival(festival: any) {
 export async function getFestivals() {
   // TODO use Strapi sorting
   return $fetch(
-    "https://strapi.elektron.art/festivals?slug_ne=signal&_sort=created_at:DESC&_limit=-1"
-  ).then((f) => f.sort(sortFestival).map(processFestival));
+    "https://strapi.elektron.art/festivals?_sort=created_at:DESC&_limit=-1"
+  ).then((f) =>
+    f.filter(filterFestival).sort(sortFestival).map(processFestival)
+  );
 }
 
 // Podcasts v3
